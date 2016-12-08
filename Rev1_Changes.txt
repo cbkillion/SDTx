@@ -1,0 +1,12 @@
+Things to change on Rev1 of the GPSDTx board:
+	*X* The DFU bootloader requires a 25MHz external oscillator, to run (cannot be run from the internal oscillator). Connect the TCXO directly to the microcontroller as the high speed external oscillator.
+	*X* Output the HSE on the MCO1 pin (PA8) to drive the input to the Si5351
+	*X* Drive the clock and write lines on the DAC directly from an output of the Si5351.
+	*X* Also feed this into PA0 on the microcontroller to trigger interrupts.
+	*X* Use PC10 as the DAC_SEL. This will allow the data and select lines to be controlled in a single write instruction rather than a write to two separate ports.
+	*X* Make sure that the correct pins on the DC jack connector are connected to POW (2 pins) and GND (2 pins)
+	*X* Connect the Quad Mod LDET pin to an input on the microcontroller as well as driving the LED
+	*X* Add an LED to the 3V3 line to show good power.
+	*X* Share a decoupling cap between pins that are located right next to each other.
+	*X* Change the ST-LINK header to be a standard 0.1" 6-pin header
+	*X* Switch the user button to PB1 so that it can be on a different interrupt line from the CLK_WRT_INT pin
